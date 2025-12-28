@@ -1,1 +1,15 @@
+BEGIN:VCARD
+VERSION:3.0
+N:;KiroMaia Ourense;;;
+FN:KiroMaia Ourense
+ORG:KiroMaia
+TEL;TYPE=WORK,VOICE:+34986169615
+TEL;TYPE=CELL,VOICE:+34622762531
+EMAIL;TYPE=INTERNET:info@kiromaia.es
+URL;TYPE=WORK:https://kiromaia.es
+URL;TYPE=MAP:https://www.google.com/maps/search/?api=1&query=R%C3%BAa%20Concordia%202%20bis%2C%2032003%20Ourense%2C%20Espa%C3%B1a
+ADR;TYPE=WORK:;;Rúa Concordia 2 bis;;Ourense;Ourense;32003;España
+NOTE:Quiropráctica integrativa. Acompañamiento hacia tu equilibrio.
+PHOTO;ENCODING=b;TYPE=PNG:<<PEGA_AQUÍ_TU_BASE64_DEL_LOGO>>
+END:VCARD
 
