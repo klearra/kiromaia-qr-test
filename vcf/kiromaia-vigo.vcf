@@ -1,1 +1,15 @@
+BEGIN:VCARD
+VERSION:3.0
+N:;KiroMaia Vigo;;;
+FN:KiroMaia Vigo
+ORG:KiroMaia
+TEL;TYPE=WORK,VOICE:+34986169615
+TEL;TYPE=CELL,VOICE:+34622762531
+EMAIL;TYPE=INTERNET:info@kiromaia.es
+URL;TYPE=WORK:https://kiromaia.es
+URL;TYPE=MAP:https://www.google.com/maps/search/?api=1&query=Av.%20Garc%C3%ADa%20Barb%C3%B3n%2023%2C%202%C2%BA%20C-D%2C%2036201%20Vigo%2C%20Pontevedra%2C%20Espa%C3%B1a
+ADR;TYPE=WORK:;;Av. García Barbón 23;2º C-D;Vigo;Pontevedra;36201;España
+NOTE:Quiropráctica integrativa. Acompañamiento hacia tu equilibrio.
+PHOTO;ENCODING=b;TYPE=PNG:<<PEGA_AQUÍ_TU_BASE64_DEL_LOGO>>
+END:VCARD
 
