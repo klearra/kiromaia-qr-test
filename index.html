@@ -2,288 +2,70 @@
 <html lang="es">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>KiroMaia · Guardar contacto</title>
-  <meta name="description" content="Selecciona la consulta de KiroMaia que deseas añadir a tu agenda." />
-
-  <!-- Tipografía: Montserrat (fallback si no hay red / bloqueo) -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
-
   <style>
-    :root{
-      /* Ajustar aquí a los HEX oficiales si los tenéis */
-      --km-green-900: #0E3B34;  /* verde profundo */
-      --km-green-700: #1E5E54;  /* verde principal */
-      --km-green-500: #2F6F63;  /* verde botón base */
-      --km-bronze-500: #C8A26A; /* bronce/acento */
-      --km-ink: #10201D;        /* texto oscuro */
-      --km-paper: #F4F6F5;      /* fondo claro */
-      --km-white: #FFFFFF;
-
-      --radius-xl: 18px;
-      --radius-md: 12px;
-
-      --shadow-1: 0 12px 28px rgba(0,0,0,.14);
-      --shadow-2: 0 10px 22px rgba(14,59,52,.18);
-    }
-
-    *{ box-sizing:border-box; }
-    html,body{ height:100%; }
-
-    body{
-      margin:0;
-      font-family: "Montserrat", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      color: var(--km-white);
-      background:
-        radial-gradient(1200px 700px at 20% -10%, rgba(200,162,106,.22), rgba(200,162,106,0) 55%),
-        radial-gradient(900px 600px at 90% 10%, rgba(47,111,99,.40), rgba(47,111,99,0) 60%),
-        linear-gradient(180deg, var(--km-green-900), #06231F);
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      padding: clamp(18px, 4vw, 34px);
-    }
-
-    .wrap{
-      width: min(520px, 100%);
-    }
-
-    .card{
-      position:relative;
-      background: rgba(255,255,255,.06);
-      border: 1px solid rgba(255,255,255,.12);
-      border-radius: var(--radius-xl);
-      box-shadow: var(--shadow-1);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      overflow:hidden;
-    }
-
-    /* marca de agua sutil */
-    .card::before{
-      content:"KIROMaIA";
-      position:absolute;
-      inset:auto -30px 18px auto;
-      transform: rotate(-10deg);
-      font-weight: 600;
-      letter-spacing: .14em;
-      opacity: .06;
-      font-size: 44px;
-      pointer-events:none;
-      user-select:none;
-      white-space:nowrap;
-    }
-
-    header{
-      padding: 26px 22px 14px;
-      text-align:center;
-    }
-
-    .logo{
-      width: 92px;
-      height: 92px;
-      border-radius: 22px;
-      background: rgba(255,255,255,.06);
-      border: 1px solid rgba(200,162,106,.35);
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      margin: 0 auto 14px;
-      box-shadow: var(--shadow-2);
-      overflow:hidden;
-    }
-
-    .logo img{
-      width: 78%;
-      height: 78%;
-      object-fit: contain;
-      display:block;
-    }
-
-    h1{
-      margin: 6px 0 8px;
-      font-size: 20px;
-      font-weight: 600;
-      letter-spacing: .01em;
-    }
-
-    .sub{
-      margin: 0 auto;
-      max-width: 34ch;
-      font-size: 13.5px;
-      line-height: 1.45;
-      opacity: .86;
-    }
-
-    .divider{
-      height:1px;
-      background: linear-gradient(90deg, rgba(200,162,106,0), rgba(200,162,106,.55), rgba(200,162,106,0));
-      margin: 12px 0 0;
-    }
-
-    main{
-      padding: 18px 18px 20px;
-    }
-
-    .btn{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap: 12px;
-
-      width:100%;
-      text-decoration:none;
-      color: var(--km-white);
-
-      background: linear-gradient(180deg, rgba(47,111,99,.95), rgba(30,94,84,.95));
-      border: 1px solid rgba(200,162,106,.55);
-      border-radius: var(--radius-md);
-      padding: 16px 16px;
-
-      box-shadow: 0 10px 22px rgba(0,0,0,.20);
-      transition: transform .12s ease, filter .12s ease, border-color .12s ease;
-    }
-
-    .btn + .btn{ margin-top: 12px; }
-
-    .btn:active{ transform: scale(.99); }
-    .btn:hover{
-      filter: brightness(1.03);
-      border-color: rgba(200,162,106,.80);
-    }
-
-    .btn-left{
-      display:flex;
-      flex-direction:column;
-      gap: 3px;
-      text-align:left;
-      min-width: 0;
-    }
-
-    .btn-title{
-      font-weight: 600;
-      font-size: 16px;
-      letter-spacing:.01em;
-      white-space:nowrap;
-      overflow:hidden;
-      text-overflow:ellipsis;
-    }
-
-    .btn-meta{
-      font-size: 12.5px;
-      opacity: .88;
-      white-space:nowrap;
-      overflow:hidden;
-      text-overflow:ellipsis;
-    }
-
-    .chev{
-      width: 34px;
-      height: 34px;
-      border-radius: 12px;
-      background: rgba(200,162,106,.14);
-      border: 1px solid rgba(200,162,106,.38);
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      flex: 0 0 auto;
-    }
-
-    .chev svg{
-      width: 18px;
-      height: 18px;
-      opacity: .92;
-    }
-
-    footer{
-      padding: 0 18px 18px;
-      text-align:center;
-      font-size: 12px;
-      opacity: .78;
-      line-height: 1.35;
-    }
-
-    .hint{
-      display:inline-block;
-      margin-top: 10px;
-      padding: 10px 12px;
-      border-radius: 12px;
-      border: 1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.06);
-    }
-
-    .hint strong{
-      color: var(--km-bronze-500);
-      font-weight: 600;
-    }
-
-    /* Accesibilidad: foco visible */
-    a.btn:focus-visible{
-      outline: 3px solid rgba(200,162,106,.65);
-      outline-offset: 3px;
-    }
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; margin: 24px; line-height: 1.35; }
+    h1 { margin: 0 0 8px; }
+    p { margin: 0 0 18px; }
+    .grid { display: grid; gap: 14px; max-width: 720px; }
+    .card { border: 1px solid #e6e6e6; border-radius: 12px; padding: 14px; }
+    .btn { display: inline-block; padding: 10px 12px; border-radius: 10px; border: 1px solid #111; text-decoration: none; color: #111; font-weight: 600; }
+    .meta { margin-top: 10px; color: #333; font-size: 0.95rem; }
+    .meta strong { color: #111; }
+    ul { margin: 8px 0 0 18px; }
+    li { margin: 4px 0; }
+    .hint { margin-top: 18px; color: #444; font-size: 0.95rem; }
   </style>
 </head>
-
 <body>
-  <div class="wrap">
-    <section class="card" role="region" aria-label="Guardar contacto KiroMaia">
-      <header>
-        <div class="logo" aria-hidden="true">
-          <!-- Ruta relativa dentro de /qr/ -->
-          <img src="assets/Logo_KiroMaia_Verde_Paint.png" alt="KiroMaia" />
-        </div>
-        <h1>Guardar contacto</h1>
-        <p class="sub">Selecciona la consulta que deseas añadir a tu agenda.</p>
-        <div class="divider" aria-hidden="true"></div>
-      </header>
+  <h1>Guardar contacto</h1>
+  <p>Selecciona la consulta que deseas añadir a tu agenda.</p>
 
-      <main>
-        <a class="btn" href="vcf/kiromaia-nigran.vcf">
-          <span class="btn-left">
-            <span class="btn-title">KiroMaia · Nigrán</span>
-            <span class="btn-meta">Rúa Alcalde Manuel Alonso 6</span>
-          </span>
-          <span class="chev" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <path d="M9 6l6 6-6 6" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </span>
-        </a>
+  <div class="grid">
 
-        <a class="btn" href="vcf/kiromaia-vigo.vcf">
-          <span class="btn-left">
-            <span class="btn-title">KiroMaia · Vigo</span>
-            <span class="btn-meta">Av. García Barbón 23 · 2º C-D</span>
-          </span>
-          <span class="chev" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <path d="M9 6l6 6-6 6" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </span>
-        </a>
+    <div class="card">
+      <a class="btn" href="vcf/kiromaia-nigran.vcf">KiroMaia · Nigrán</a>
+      <div class="meta">
+        <div><strong>Dirección:</strong> Rúa Alcalde Manuel Alonso 6</div>
+        <div><strong>Horario:</strong></div>
+        <ul>
+          <li>Lunes: 09:30–13:30</li>
+          <li>Martes: 16:00–20:00 <em>(cada 15 días)</em></li>
+          <li>Miércoles: 09:30–13:30 y 16:00–20:00 <em>(cada 15 días)</em></li>
+          <li>Viernes: 16:00–20:00</li>
+        </ul>
+      </div>
+    </div>
 
-        <a class="btn" href="vcf/kiromaia-ourense.vcf">
-          <span class="btn-left">
-            <span class="btn-title">KiroMaia · Ourense</span>
-            <span class="btn-meta">Rúa Concordia 2 bis</span>
-          </span>
-          <span class="chev" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <path d="M9 6l6 6-6 6" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </span>
-        </a>
-      </main>
+    <div class="card">
+      <a class="btn" href="vcf/kiromaia-vigo.vcf">KiroMaia · Vigo</a>
+      <div class="meta">
+        <div><strong>Dirección:</strong> Av. García Barbón 23 · 2º C-D</div>
+        <div><strong>Horario:</strong></div>
+        <ul>
+          <li>Lunes: 16:00–20:00</li>
+          <li>Jueves: 16:00–20:00</li>
+          <li>Viernes: 10:00–14:00</li>
+        </ul>
+      </div>
+    </div>
 
-      <footer>
-        <div class="hint">
-          Si tu móvil no abre el contacto automáticamente, pulsa el botón y elige <strong>“Añadir contacto”</strong>.
-        </div>
-      </footer>
-    </section>
+    <div class="card">
+      <a class="btn" href="vcf/kiromaia-ourense.vcf">KiroMaia · Ourense</a>
+      <div class="meta">
+        <div><strong>Dirección:</strong> Rúa Concordia 2 bis</div>
+        <div><strong>Horario:</strong></div>
+        <ul>
+          <li>Martes: 11:00–19:00 <em>(cada 15 días)</em></li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="hint">
+    Si tu móvil no abre el contacto automáticamente, pulsa el botón y elige “Añadir contacto”.
   </div>
 </body>
 </html>
